@@ -11,7 +11,6 @@ Various links, notes and files for Nokia N900.
   - [NITDroid](#nitdroid)
   - [Other OS](#other-os)
 
-
 ## pmOS
 
 ### My notes
@@ -49,9 +48,10 @@ Various links, notes and files for Nokia N900.
 2. [NITDroid on dedicated disk part](https://talk.maemo.org/showthread.php?t=101345)
 3. [Install manual's maxed-nokia-n900](http://maxed-nokia-n900.blogspot.com/)
 4. [Archive.org files](https://archive.org/details/NokiaN900NITdroid)
+5. [Triple-boot - Maemo 5 + Maemo 7 Leste + Android 2.3.4](https://talk.maemo.org/showthread.php?t=101338)
 
 ## Other OS
 
 1. [RescueOS](https://github.com/quitesimpleorg/N900_RescueOS) [(description)](https://quitesimple.org/page/N900rescueOS)
 2. [Kali Linux Rolling Edition (depricated)](https://talk.maemo.org/showthread.php?t=96573)
-3. [[Arch Linux ARM (depricated)]](https://talk.maemo.org/showthread.php?t=81892)
+3. [Arch Linux ARM (depricated)](https://talk.maemo.org/showthread.php?t=81892)

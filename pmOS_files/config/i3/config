@@ -1,0 +1,123 @@
+font pango:Fira Code Retina 8
+
+# bordersize
+new_window 1pixel
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/postmarketos.jpg
+
+# Tray sh
+# exec_always --no-startup-id "~/.config/i3/tray.sh"
+
+# Colors
+# class                 border  backgr. text    indicator
+client.placeholder      #000000 #000000 #000000 #d95fc3
+client.background       #000000 #000000 #000000
+client.focused          #d95fc3 #000000 #d95fc3 #d95fc3 #d95fc3
+client.unfocused        #99037e #000000 #faaaad #99037e #d95fc3
+client.focused_inactive #5e004d #000000 #5e004d #666666 #d95fc3
+client.urgent           #ff00d1 #000000 #ffffff #666666
+
+workspace_layout tabbed
+
+mode "workspace" {
+	bindsym a workspace 1
+	bindsym s workspace 2
+	bindsym d workspace 3
+	bindsym f workspace 4
+	bindsym g workspace 5
+	bindsym Left workspace prev
+	bindsym Right workspace next
+	bindsym Shift+Left move container to workspace prev
+	bindsym Shift+Right move container to workspace next
+	bindsym q mode "command"
+}
+
+mode "brightness" {
+	bindsym w exec --no-startup-id sudo screen_brightness.sh 30
+	bindsym s exec --no-startup-id sudo screen_brightness.sh -30
+	bindsym e exec --no-startup-id sudo kb_brightness.sh 30
+	bindsym d exec --no-startup-id sudo kb_brightness.sh -30
+	bindsym q mode "command"
+}
+
+# Control the music player daemon. Keybindings are roughly the same as in the ncmpcpp client.
+mode "mpd" {
+	bindsym p exec mpc toggle
+	bindsym s exec mpc stop
+
+	bindsym Left exec mpc prev
+	bindsym Right exec mpc next
+	bindsym Up exec mpc vol +2
+	bindsym Down exec mpc vol -2
+
+	bindsym n exec st -f "Fira Code Retina-9" -e ncmpcpp; mode "default"
+	bindsym q mode "command"
+}
+
+mode "command" {
+	bindsym t exec st -f "Fira Code Retina-9"
+	bindsym d exec dmenu_run; mode "default"
+	bindsym q mode "default"
+	bindsym f fullscreen
+	bindsym k kill; mode "default"
+	bindsym n exec netsurf
+	bindsym r restart
+
+	bindsym Left focus left
+	bindsym Right focus right
+	bindsym Up focus up
+	bindsym Down focus down
+
+	bindsym Shift+Left move left
+	bindsym Shift+Right move right
+	bindsym Shift+Up move up
+	bindsym Shift+Down move down
+
+	bindsym h split h
+	bindsym v split v
+
+	bindsym w mode "workspace"
+	# bindsym m mode "mpd"
+	bindsym c mode "control"
+	bindsym b mode "brightness"
+}
+
+# Enter command mode
+bindsym Shift+space mode "command"
+
+# Create screenshot
+bindsym Shift+Ctrl+p exec scrot '%Y-%m-%d_%H-%M-%S.png' -e 'mkdir -p ~/Screenshots && mv $f ~/Screenshots'
+
+# This is the sliding button on the side of the device,
+bindsym XF86ScreenSaver exec --no-startup-id lock.sh
+
+# Pressing the power button on the top suspends the device,
+bindsym XF86PowerOff exec --no-startup-id sudo pm-suspend
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	position top
+	font pango:Fira Code Retina 9
+	status_command i3blocks
+	colors {
+		background #000000
+		statusline #d95fc3
+		separator #99037e
+		focused_workspace #d95fc3 #000000 #d95fc3
+		inactive_workspace #000000 #d95fc3 #000000
+		urgent_workspace #ff00d1 #ff00d1 #fffff
+	}
+}
+
+# Hide mouse cursor
+exec --no-startup-id unclutter-xfixes --fork
+
+# Conky
+# exec --no-startup-id conky --daemonize
+# Review the lines below and append to ~/.config/i3/config
+
+# Volume ALSA control
+bindsym XF86AudioRaiseVolume exec amixer set PCM 5%+
+bindsym XF86AudioLowerVolume exec amixer set PCM 5%-
